@@ -9,13 +9,12 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  # validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_nil: true, length: { minimum: 12 }, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/ }
   validates :role, presence: true
 
   enum role: { basic: 0, admin: 99 }
-
-  after_create :create_profile
 
   before_validation if: -> { email.present? } do
     self.email = email.downcase.strip
@@ -29,9 +28,11 @@ class User < ApplicationRecord
     sessions.where.not(id: Current.session).destroy_all
   end
 
-  private
+  before_create -> { build_profile(name: "Siervo Fiel #{Time.current.to_i/Time.current.sec}") }
 
-  def create_profile
-    create_profile!
+  def username
+    return profile.name if profile.name.present?
+
+    email
   end
 end
