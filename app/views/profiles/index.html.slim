@@ -1,16 +1,21 @@
-.container.rounded.bg-white.shadow-lg.p-10
+.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
   = form_with model: @profile do |f|
     .flex.flex-col.gap-5
       - if @profile.avatar.present?
-        = image_tag @profile.avatar.variant(resize_to_limit: [100, 100]), width: 100, height: 100
+        = image_tag @profile.avatar.variant(resize_to_limit: [100, 100]), width: 120, height: 120, class: 'mx-auto shadow-xl border rounded-full'
       - else
         .rounded-full.bg-gray-500.h-20.w-20
 
-      = f.file_field :avatar
-      = f.label :name
-      = f.text_field :name, value: @profile.name
-      = f.label :biography
-      = f.text_area :biography
+      .mb-3
+        = f.file_field :avatar
+      .mb-3
+        = f.label :name, 'Nombre'
+        = f.text_field :name, value: @profile.name, class: 'rounded-lg w-full'
+      .mb-3
+        = f.label :biography, 'Biografía'
+        div = f.text_area :biography, class: 'rounded-lg text-sm w-full'
 
-      = f.submit 'Save profile', class: 'bg-purple-600 text-white font-bold py-2 px-3 rounded-lg shadow'
+      = f.submit 'Guardar', class: 'bg-purple-600 text-white font-bold py-2 px-3 rounded-lg shadow mb-4'
+  
+  = link_to 'Cambiar contraseña', edit_password_path, class: 'bg-gray-200 font-bold py-2 px-3 rounded-lg shadow text-center'
 

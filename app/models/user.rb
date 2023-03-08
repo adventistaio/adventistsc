@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :password_reset_tokens, dependent: :destroy
   has_many :sessions, dependent: :destroy
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   has_many :posts, dependent: :destroy
 
