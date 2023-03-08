@@ -26,4 +26,13 @@ RSpec.describe User, type: :model do
         .with_values(basic: 0, admin: 99)
     end
   end
+
+  describe '#create' do
+    context 'user creation' do
+      it 'create profile too' do
+        subject = User.create(email: 'new@user', password: 'Pa$$w0rd1234', password_confirmation: 'Pa$$w0rd1234')
+        expect(subject.profile.persisted?).to eq true
+      end
+    end
+  end
 end
