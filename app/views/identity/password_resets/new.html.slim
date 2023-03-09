@@ -1,0 +1,13 @@
+.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
+
+  p style="color: red" = alert
+
+  h1.font-bold.text-xl.mb-5 ¿Olvidaste tu contraseña?
+
+  = form_with(url: identity_password_reset_path) do |form|
+    .mb-4
+      = form.label :email, style: "display: block"
+      = form.email_field :email, required: true, autofocus: true, class: 'w-full rounded-lg'
+
+    .mb-4
+      = form.submit "Enviar instrucciones a mi correo", class: 'shadow-lg text-lg cursor-pointer w-full py-2 font-bold text-white rounded-lg bg-gradient-to-r from-emerald-500 to-lime-600'

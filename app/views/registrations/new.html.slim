@@ -1,0 +1,30 @@
+.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
+  h1.font-bold.text-2xl.mb-5 Registrarme
+
+  = form_with(url: sign_up_path) do |form|
+    - if @user.errors.any?
+      .er2mb-5 style="color: red"
+        h2.font-bold.text-sm #{pluralize(@user.errors.count, "error")} prohibited this user from being saved:
+
+        ul
+          - @user.errors.each do |error|
+            li.text-xs - #{error.full_message}
+
+    .mb-4
+      = form.label :email, style: "display: block"
+      = form.email_field :email, required: true, autofocus: true, autocomplete: "email", class: 'w-full'
+
+    .mb-4
+      = form.label :password, 'Contraseña', style: "display: block"
+      = form.password_field :password, required: true, autocomplete: "new-password", class: 'w-full'
+      .text-sm.font-light 12 characters minimum.
+
+    .mb-4
+      = form.label :password_confirmation, 'Confirma la contraseña', style: "display: block"
+      = form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: 'w-full'
+
+    .mb-4
+      = form.submit 'Registrarme',
+                    class: 'text-lg cursor-pointer w-full py-2 font-bold text-white rounded-lg bg-gradient-to-r from-emerald-500 to-lime-600'
+      .text-sm.text-center.my-5 ¿Ya tienes una cuenta?
+      = link_to "Ingresar", sign_in_path, class: 'block text-center text-lg cursor-pointer w-full py-2 font-semibold text-gray-600 rounded-lg bg-white border shadow'
