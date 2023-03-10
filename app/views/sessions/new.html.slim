@@ -8,11 +8,11 @@
   = form_with(url: sign_in_path) do |form|
     .mb-4
       = form.label :email, style: "display: block"
-      = form.email_field :email, value: params[:email_hint], required: true, autofocus: true, autocomplete: "email", class: 'w-full'
+      = form.email_field :email, value: params[:email_hint], required: true, autofocus: true, autocomplete: "email", class: 'w-full rounded-lg'
 
     .mb-4
-      = form.label :password, style: "display: block"
-      = form.password_field :password, required: true, autocomplete: "current-password", class: 'w-full'
+      = form.label :password, 'Contraseña', style: "display: block"
+      = form.password_field :password, required: true, autocomplete: "current-password", class: 'w-full rounded-lg'
 
     .mb-4
       = form.submit "Ingresar", class: 'text-lg cursor-pointer w-full py-2 font-bold text-gray-600 rounded-lg border rounded shadow-lg'

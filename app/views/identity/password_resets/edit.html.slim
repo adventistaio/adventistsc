@@ -1,26 +1,26 @@
 .container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
 
-  h1 Reset your password
+  h1.font-bold.text-xl.mb-5 Restaura tu contraseña
 
   = form_with(url: identity_password_reset_path, method: :patch) do |form|
     - if @user.errors.any?
       div style="color: red"
-        h2 #{pluralize(@user.errors.count, "error")} prohibited this user from being saved:
+        h2.font-bold.text-sm #{pluralize(@user.errors.count, "error")} prohibited this user from being saved:
 
         ul
           - @user.errors.each do |error|
-            li = error.full_message
+            li.text-xs - #{error.full_message}
 
     = form.hidden_field :sid, value: params[:sid]
 
-    div
-      = form.label :password, "New password", style: "display: block"
-      = form.password_field :password, required: true, autofocus: true, autocomplete: "new-password"
-      div 12 characters minimum.
+    .mb-4
+      = form.label :password, "Nueva contraseña", style: "display: block"
+      = form.password_field :password, required: true, autofocus: true, autocomplete: "new-password", class: 'w-full rounded-lg'
+      .text-xs Minimo 12 caracteres.
+
+    .mb-4
+      = form.label :password_confirmation, "Confirma la nueva contraseña", style: "display: block"
+      = form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: 'w-full rounded-lg'
 
     div
-      = form.label :password_confirmation, "Confirm new password", style: "display: block"
-      = form.password_field :password_confirmation, required: true, autocomplete: "new-password"
-
-    div
-      = form.submit "Save changes"
+      = form.submit "Guardar cambios", class: 'shadow-lg text-lg cursor-pointer w-full py-2 font-bold text-white rounded-lg bg-gradient-to-r from-emerald-500 to-lime-600'

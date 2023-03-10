@@ -12,16 +12,16 @@
 
     .mb-4
       = form.label :email, style: "display: block"
-      = form.email_field :email, required: true, autofocus: true, autocomplete: "email", class: 'w-full'
+      = form.email_field :email, required: true, autofocus: true, autocomplete: "email", class: 'w-full rounded-lg'
 
     .mb-4
       = form.label :password, 'Contraseña', style: "display: block"
-      = form.password_field :password, required: true, autocomplete: "new-password", class: 'w-full'
-      .text-sm.font-light 12 characters minimum.
+      = form.password_field :password, required: true, autocomplete: "new-password", class: 'w-full rounded-lg'
+      .text-sm.font-light Minimo 12 caracteres.
 
     .mb-4
       = form.label :password_confirmation, 'Confirma la contraseña', style: "display: block"
-      = form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: 'w-full'
+      = form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: 'w-full rounded-lg'
 
     .mb-4
       = form.submit 'Registrarme',
