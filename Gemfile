@@ -72,14 +72,13 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'webdrivers'
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'webdrivers'
 end
 
-gem 'slim-rails', '~> 3.6'
-
-gem "authentication-zero", "~> 2.16"
+gem 'authentication-zero', '~> 2.16'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-gem "bcrypt", "~> 3.1.7"
-
-gem "faker", "~> 3.1"
+gem 'bcrypt', '~> 3.1.7'
+gem 'faker', '~> 3.1'
+gem 'image_processing', '>= 1.2'
+gem 'slim-rails', '~> 3.6'

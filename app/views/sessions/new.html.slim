@@ -1,0 +1,23 @@
+.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
+
+  p style="color: green" = notice
+  p style="color: red" = alert
+
+  h1.font-bold.text-2xl.mb-5 Ingresar
+
+  = form_with(url: sign_in_path) do |form|
+    .mb-4
+      = form.label :email, style: "display: block"
+      = form.email_field :email, value: params[:email_hint], required: true, autofocus: true, autocomplete: "email", class: 'w-full rounded-lg'
+
+    .mb-4
+      = form.label :password, 'Contraseña', style: "display: block"
+      = form.password_field :password, required: true, autocomplete: "current-password", class: 'w-full rounded-lg'
+
+    .mb-4
+      = form.submit "Ingresar", class: 'text-lg cursor-pointer w-full py-2 font-bold text-gray-600 rounded-lg border rounded shadow-lg'
+
+  .text-center.text-sm.mb-4 Ó
+  div
+    = link_to "Registrarme", sign_up_path, class: 'mb-4 block text-center shadow text-lg cursor-pointer w-full py-2 font-bold text-white rounded-lg bg-gradient-to-r from-emerald-500 to-lime-600'
+    = link_to "¿Olvidaste tu contraseña?", new_identity_password_reset_path, class: 'block text-center text-sm'
