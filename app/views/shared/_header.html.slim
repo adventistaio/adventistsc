@@ -14,9 +14,9 @@
       / div
       /   = link_to "Devices & Sessions", sessions_path
 
-      = button_to "Log out", Current.session, method: :delete, class: 'text-xs text-white bg-red-500 px-2 py-0.5 rounded'
+      = button_to "Salir", Current.session, method: :delete, class: 'text-xs text-white bg-red-500 px-2 py-0.5 rounded'
     - else
       .flex.gap-3.items-center
-        = link_to "Sign in", sign_in_path, class: 'px-2 py-1 rounded bg-white shadow border border-gray-600'
-        | or
-        = link_to "Sign up", sign_up_path, class: 'px-2 py-1 rounded bg-lime-400 shadow  border font-bold'
+        = link_to "Ingresar", sign_in_path, class: 'px-2 py-1 rounded bg-white shadow border border-gray-600'
+        | ó
+        = link_to "Registrarme", sign_up_path, class: 'px-2 py-1 rounded bg-lime-400 shadow  border font-bold'
