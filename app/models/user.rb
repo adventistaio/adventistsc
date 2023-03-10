@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   # validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, allow_nil: true, length: { minimum: 12 }, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/ }
+  validates :password, allow_nil: true, length: { minimum: 10 }, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/ }
   validates :role, presence: true
 
   enum role: { basic: 0, admin: 99 }
