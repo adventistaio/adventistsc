@@ -1,0 +1,11 @@
+p Hola!,
+
+p Esto es para confirmar que el correo #{@user.email} es el correo que quieres usar en tu cuenta. Si alguna vez olvidas tu contraseña, esta es la direccion a donde enviaremos el enlace con las instrucciones para restaurarla</p>
+
+p: strong Debes dar click en el siguiente enlace para confirmar que recibiste este correo.
+
+= link_to "Sí, usar este correo para mi cuenta", edit_identity_email_verification_url(sid: @signed_id)
+
+hr
+
+p ¿Tienes preguntas o necesitas ayuda? Solo responde a este correo y nuestro equipo de soporte te ayudara a resolverlo.
