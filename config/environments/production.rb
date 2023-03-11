@@ -92,6 +92,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: ENV['HOST'] }
+  config.action_mailer.default_options = { from: "hola@#{ENV['HOST']}" }
 
   config.action_mailer.smtp_settings = {
     user_name: 'apikey',
