@@ -91,7 +91,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.default_url_options = { host: ENV['HOST'] }
+
+  config.action_mailer.smtp_settings = {
     user_name: 'apykey',
     password: ENV['SENDGRID_API_KEY'],
     domain: 'adventista.app',
