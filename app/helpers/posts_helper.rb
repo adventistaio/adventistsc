@@ -8,7 +8,7 @@ module PostsHelper
     when 15..18 then 'bg-gradient-to-r from-yellow-300 via-yellow-200 to-orange-300'
     when 19..21 then 'bg-gradient-to-r from-orange-400 via-orange-300 to-indigo-400'
     else
-      'text-white bg-gradient-to-r from-indigo-800 via-indigo-200 to-white'
+      'text-white bg-gradient-to-r from-indigo-800 via-indigo-900 to-gray-800'
     end
   end
 end
