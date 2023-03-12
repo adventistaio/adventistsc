@@ -1,6 +1,6 @@
 .flex-col.mb-10.rounded-md.shadow-lg.bg-white.divide-y.text-gray-600.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700
   .flex.justify-between.p-1.text-sm.px-5.py-2.items-center
-    div = @post.user.email
+    div = @post.user.username
     .text-gray-400.text-xs = time_ago_in_words(@post.created_at)
   .p-10.font-bold.text-center
     = @post.content

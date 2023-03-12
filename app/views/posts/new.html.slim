@@ -1,0 +1,4 @@
+.container
+  = turbo_frame_tag dom_id(Post.new)
+    .rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-full.mx-auto.my-10.border
+      = render(Posts::NewComponent.new(post: @post))

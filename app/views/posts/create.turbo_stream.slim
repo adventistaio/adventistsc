@@ -1,0 +1,4 @@
+= turbo_stream.prepend 'feed'
+  = render(Posts::PostComponent.new(post: @post))
+= turbo_stream.update Post.new
+  .mb-4.text-right = link_to '+ Nuevo', new_post_path, class: 'bg-blue-500 text-white font-bold rounded-lg px-2 py-2 text-sm shadow'
