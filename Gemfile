@@ -58,6 +58,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'dockerfile-rails', '>= 1.2'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
@@ -82,5 +83,4 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '~> 3.1'
 gem 'image_processing', '>= 1.2'
 gem 'slim-rails', '~> 3.6'
-
-gem "dockerfile-rails", ">= 1.2", :group => :development
+gem 'view_component'
