@@ -8,7 +8,8 @@
 
       = turbo_frame_tag 'feed'
         - @posts.each do |post|
-          = render(Posts::PostComponent.new(post:))
+          = turbo_frame_tag post
+            = render(Posts::PostComponent.new(post:))
     .flex-col
       .flex.justify-between
         h2.text-xl.font-bold.mb-5 Noticias

@@ -2,10 +2,17 @@
   .flex.justify-between.p-1.text-sm.px-5.py-2.items-center
     .text-xs.font-semibold = @post.user.username
     .text-gray-400.text-xs = time_ago_in_words(@post.created_at)
-  /.py-8.py-16.py-32
+  /.py-8.py-16.py-32.text-2xl.text-4xl
   .px-10.text-center class=(post_content_style(@post.content))
     = @post.content
   .flex.justify-between.p-3.text-xs
     | 💗 2 Likes     ☁️ 10 Comments
     .menu
-      i.fa-solid.fa-ellipsis
+      .dropdown.relative data-controller='dropdown'
+        i.fa-solid.fa-ellipsis.cursor-pointer.rounded.hover:bg-gray-600.p-1 data-dropdown-target='button' data-action='click->dropdown#toggle'
+        .absolute.top-5.right-0.border.rounded-lg.hidden.px-3.py-2.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-dropdown-target='menu'
+          ul
+            - if @post.user == Current.user
+              li.mb-0.cursor-pointer.px-2.py-1.rounded.hover:bg-gray-600
+                = button_to 'Eliminar', @post, method: :delete, data: { turbo_confirm: '¿Deseas Eliminarlo?' }
+
