@@ -10,6 +10,6 @@ html
     = javascript_importmap_tags
 
   body class=(dark_mode)
-    = render 'shared/header'
-    main
+    main.dark:bg-gray-700
+      = render 'shared/header'
       = yield
