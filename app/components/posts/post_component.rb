@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
+include Turbo::FramesHelper
+
 class Posts::PostComponent < ViewComponent::Base
   def initialize(post:)
     super
     @post = post
+    @current_user_like = @post.current_user_like
   end
 
   def post_content_style(content)

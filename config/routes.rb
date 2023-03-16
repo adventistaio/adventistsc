@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   resources :profiles, only: %i[index update], path: :profile
   resources :posts, only: %i[new create destroy]
+  resources :likes, only: %i[create destroy]
 end
