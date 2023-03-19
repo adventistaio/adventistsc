@@ -1,0 +1,4 @@
+= turbo_stream.remove dom_id(@commentable, :no_comments) if @commentable.comments.size == 1
+
+= turbo_stream.append dom_id(@commentable, :comments)
+  = render(Shared::CommentComponent.new(comment: @comment))

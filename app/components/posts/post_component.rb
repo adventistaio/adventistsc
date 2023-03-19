@@ -3,9 +3,10 @@
 include Turbo::FramesHelper
 
 class Posts::PostComponent < ViewComponent::Base
-  def initialize(post:)
+  def initialize(post:, isolated: false)
     super
     @post = post
+    @isolated = isolated
     @current_user_like = @post.current_user_like
   end
 

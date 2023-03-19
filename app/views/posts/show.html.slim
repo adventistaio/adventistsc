@@ -1,2 +1,2 @@
 .container.mx-auto.mt-28.px-5.py-5.flex.rounded-lg class=(posts_background)
-  = render(Posts::PostComponent.new(post: @post))
+  = render(Posts::PostComponent.new(post: @post, isolated: true))

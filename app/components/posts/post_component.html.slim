@@ -1,4 +1,4 @@
-.flex-col.mb-10.mx-auto.w-full.max-w-screen-sm.rounded-md.shadow-xl.bg-white.divide-y.text-gray-600.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700
+.flex-col.mb-10.mx-auto.w-full.max-w-screen-sm.rounded-md.shadow-xl.bg-white.divide-y.text-gray-600.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-controller='posts'
   .flex.justify-between.p-1.text-sm.px-5.py-2.items-center
     .text-xs.font-semibold = @post.user.username
     .text-gray-400.text-xs = time_ago_in_words(@post.created_at)
@@ -6,8 +6,11 @@
   .px-10.text-center class=(post_content_style(@post.content))
     = @post.content
   .flex.justify-between.p-3.text-xs
-    = turbo_frame_tag dom_id(@post, :like)
-      = render(Shared::LikeComponent.new(like: @current_user_like, likeable: @post))
+    .flex.gap-10
+      = turbo_frame_tag dom_id(@post, :like)
+        = render(Shared::LikeComponent.new(like: @current_user_like, likeable: @post))
+      = turbo_frame_tag dom_id(@post, :comments_info)
+        = render(Shared::CommentsInfoComponent.new(count: @post.comments.count, controller: 'posts'))
     .menu
       .dropdown.relative data-controller='dropdown'
         i.fa-solid.fa-ellipsis.cursor-pointer.rounded.hover:bg-gray-600.p-1 data-dropdown-target='button' data-action='click->dropdown#toggle'
@@ -16,4 +19,20 @@
             - if @post.user == Current.user
               li.mb-0.cursor-pointer.px-2.py-1.rounded.hover:bg-gray-600
                 = button_to 'Eliminar', @post, method: :delete, data: { turbo_confirm: '¿Deseas Eliminarlo?' }
+  .flex.flex-col.p-5 class=("hidden" unless @isolated) data-posts-target='comments'
+    .mb-5.font-bold Comentarios
+    - if @post.comments.empty?
+      = turbo_frame_tag dom_id(@post, :no_comments)
+        .text-center.my-7
+          i.fa-regular.fa-comments.h-8.cursor-pointer.text-gray-600.mb-2
+          .text-gray-500 ¡Deja un comentario!
+    = turbo_frame_tag dom_id(@post, :comments)
+      = render(Shared::CommentComponent.with_collection(@post.comments))
+    = form_with model: @post.comments.build, data: { action: 'turbo:submit-end->posts#clearCommentForm' } do |f|
+      .flex.items-center.gap-3
+        i.fa-regular.fa-keyboard.text-gray-400.h-5
+        = f.hidden_field :commentable_type, value: @post.class.name
+        = f.hidden_field :commentable_id, value: @post.id
+        = f.text_field :comment, autocomplete: 'off',  class: 'rounded-full bg-gray-700 px-7 w-full', data: { posts_target: 'inputComment' }
+
 

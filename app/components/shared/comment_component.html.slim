@@ -1,1 +1,5 @@
-div Add Shared::Comment template here
+.flex.flex-col.mb-5
+  .flex.gap-2
+    .h-5.w-5.bg-gray-500.rounded-full
+    .text-sm.font-bold = @comment.user.username
+  .ml-7 = @comment.comment
