@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :profiles, only: %i[index update], path: :profile
-  resources :posts, only: %i[new create destroy]
+  resources :posts, only: %i[new show create destroy]
   resources :likes, only: %i[create destroy]
 end

@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :set_post, only: :destroy
+  before_action :set_post, only: %i[show destroy]
 
   def new
     @post = Post.new
   end
+
+  def show; end
 
   def create
     @post = Current.user.posts.build(post_params)
