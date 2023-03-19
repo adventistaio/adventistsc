@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :likes, as: :reactable
 
   validates :content, presence: true
+  validates :user, presence: true
 
   def current_user_like
     likes.find_by(user: Current.user)

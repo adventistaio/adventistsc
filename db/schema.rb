@@ -79,6 +79,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_16_025324) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reactable_type", "reactable_id"], name: "index_reactions_on_reactable"
+    t.index ["reactable_type", "reactable_id"], name: "index_reactions_on_reactable_type_and_reactable_id", unique: true
     t.index ["user_id"], name: "index_reactions_on_user_id"
   end
 

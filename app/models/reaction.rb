@@ -6,4 +6,7 @@ class Reaction < ApplicationRecord
 
   validates :reaction, presence: true
   validates :user, presence: true
+  validates :reactable, presence: true
+
+  validates :user_id, uniqueness: { scope: %i[reactable_id reactable_type] }
 end

@@ -7,8 +7,6 @@ class Like < Reaction
 
   after_initialize :defaults
 
-  validates :user, uniqueness: { scope: :likeable }
-
   private
 
   def defaults
