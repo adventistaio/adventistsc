@@ -1,0 +1,6 @@
+.flex.gap-2.items-center
+  - if @user.profile.avatar.present?
+    = image_tag @user.profile.avatar.variant(:xs), class: 'h-5 w-5 rounded-full'
+  - else
+    .flex.h-5.w-5.rounded-full.bg-gray-700.text-white.text-xs.items-center.justify-center.font-bold.dark:bg-white.dark:text-black ~
+  .text-sm.font-bold = @user.username
