@@ -12,13 +12,7 @@ export default class extends Controller {
   }
 
   toggle() {
-    const hidden = [...this.menuTarget.classList].includes('hidden')
-    console.log(hidden)
-    if (hidden) {
-      this.menuTarget.classList.remove('hidden')
-    } else {
-      this.hideMenu()
-    }
+    this.menuTarget.classList.toggle('hidden')
   }
 
   hideMenu() {

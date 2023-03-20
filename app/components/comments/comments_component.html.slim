@@ -1,0 +1,25 @@
+/ = helpers.turbo_stream_from dom_id(@commentable, :comments)
+
+.flex.flex-col.p-5{
+    class=("hidden" unless @isolated)
+    data-controller='comments'
+    *{"data-#{@stimulus_controller}-target": 'comments', action: 'scroll->#{@stimulus_controller}#hiddeNoComments'}
+  }
+
+  .mb-5.font-bold Comentarios
+  = turbo_frame_tag dom_id(@commentable, :comments)
+    / - if @commentable.comments.empty?
+    .comments data-comments-target='comments'
+      .no-comments.text-center.my-7 class=('hidden' if @commentable.comments.any?) data-comments-target="noComments"
+        i.fa-regular.fa-comments.h-8.cursor-pointer.text-gray-300.dark:text-gray-600.mb-2
+        .text-sm.text-gray-400.dark:text-gray-500 ¡Aun no hay comentarios!
+      / - else
+      = render(Comments::CommentComponent.with_collection(@commentable.comments))
+  = form_with model: @commentable.comments.build, data: { action: 'turbo:submit-end->posts#clearCommentForm' } do |f|
+    .flex.items-center.gap-3
+      i.fa-regular.fa-keyboard.text-gray-400.h-5
+      = f.hidden_field :commentable_type, value: @commentable.class.name
+      = f.hidden_field :commentable_id, value: @commentable.id
+      = f.text_field :comment, autocomplete: 'off',  class: 'rounded-full px-7 w-full bg-white dark:bg-gray-700', data: { posts_target: 'inputComment' }, required: true, placeholder: 'Escribe un comentario...'
+      button
+        i.fa-solid.fa-paper-plane.text-blue-400

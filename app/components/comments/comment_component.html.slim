@@ -1,3 +1,17 @@
-.flex.flex-col.mb-5
-  = render(Shared::UserInfoComponent.new(user: @comment.user))
-  .ml-7 = @comment.comment
+= turbo_frame_tag @comment
+  .flex.items-center.mb-5.p-2
+    .flex.grow.items-center.gap-4
+      .grow.flex.flex-col
+        = render(Shared::UserInfoComponent.new(user: @comment.user))
+        .ml-7 = @comment.comment
+    .menu
+      .dropdown.flex.relative data-controller='dropdown'
+          button.flex.h-6.w-6.justify-center.items-center.rounded.hover:bg-gray-200.dark:hover:bg-gray-600.p-1  data-action='click->dropdown#toggle'
+            i.fa-solid.fa-ellipsis data-dropdown-target='button'
+          .absolute.top-5.right-0.shadow-xl.border.rounded-lg.hidden.px-3.py-2.bg-white.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-dropdown-target='menu'
+            ul
+              - if @comment.user == Current.user
+                li
+                  = button_to 'Eliminar', @comment, method: :delete,
+                                                data: { turbo_confirm: '¿Deseas Eliminarlo?' },
+                                                class: 'px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600'

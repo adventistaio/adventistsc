@@ -19,9 +19,7 @@ class CommentsController < ApplicationController
     @commentable = @comment.commentable
     @comment.destroy
 
-    respond_to do |format|
-      format.turbo_stream
-    end
+    respond_to(&:turbo_stream)
   end
 
   private

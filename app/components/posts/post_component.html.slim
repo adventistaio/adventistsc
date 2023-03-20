@@ -10,15 +10,18 @@
       = turbo_frame_tag dom_id(@post, :like)
         = render(Shared::LikeComponent.new(like: @current_user_like, likeable: @post))
       = turbo_frame_tag dom_id(@post, :comments_info)
-        = render(Shared::CommentsInfoComponent.new(count: @post.comments.count, controller: 'posts'))
+        = render(Shared::CommentsInfoComponent.new(count: @post.comments.size, controller: 'posts'))
     .menu
-      .dropdown.relative data-controller='dropdown'
-        i.fa-solid.fa-ellipsis.cursor-pointer.rounded.hover:bg-gray-600.p-1 data-dropdown-target='button' data-action='click->dropdown#toggle'
-        .absolute.top-5.right-0.border.rounded-lg.hidden.px-3.py-2.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-dropdown-target='menu'
+      .dropdown.flex.relative data-controller='dropdown'
+        button.h-6.w-6.justify-center.items-center.rounded.hover:bg-gray-200.dark:hover:bg-gray-600.p-1  data-action='click->dropdown#toggle'
+          i.fa-solid.fa-ellipsis data-dropdown-target='button'
+        .absolute.top-5.right-0.shadow-xl.border.rounded-lg.hidden.px-3.py-2.bg-white.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-dropdown-target='menu'
           ul
             - if @post.user == Current.user
-              li.mb-0.cursor-pointer.px-2.py-1.rounded.hover:bg-gray-600
-                = button_to 'Eliminar', @post, method: :delete, data: { turbo_confirm: '¿Deseas Eliminarlo?' }
-  = render(Comments::ContainerComponent.new(commentable: @post))
+              li
+                = button_to 'Eliminar', @post, method: :delete,
+                                               data: { turbo_confirm: '¿Deseas Eliminarlo?' },
+                                               class: 'px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600'
+  = render(Comments::CommentsComponent.new(commentable: @post))
 
 
