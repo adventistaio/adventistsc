@@ -29,7 +29,7 @@ class Comment < ApplicationRecord
 
     broadcast_append_to :comments,
                         partial: 'comments/create',
-                        locals: { commentable:, comment: self }
-                        # target: "comments_#{ commentable.class.name.parameterize}_#{commentable.id}"
+                        locals: { commentable:, comment: self },
+                        target: "comments_#{commentable.class.name.parameterize}_#{commentable.id}"
   end
 end

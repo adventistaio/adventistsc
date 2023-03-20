@@ -10,14 +10,13 @@ export default class extends Controller {
 
   commentsTargetConnected() {
     useMutation(this, { element: this.commmentsTarget, childList: true, subtree: true })
-    console.log('comments: ', this.commentsTarget)
   }
   
   noCommentsTargetConnected() {
-    console.log('no comments: ', this.noCommentsTarget)
   }
 
   mutate() {
+    console.log(this.commentsTarget.children.length)
     if (this.commentsTarget.children.length === 1) {
       this.noCommentsTarget.classList.remove('hidden')
     } else {
