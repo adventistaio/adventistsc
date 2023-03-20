@@ -19,20 +19,6 @@
             - if @post.user == Current.user
               li.mb-0.cursor-pointer.px-2.py-1.rounded.hover:bg-gray-600
                 = button_to 'Eliminar', @post, method: :delete, data: { turbo_confirm: '¿Deseas Eliminarlo?' }
-  .flex.flex-col.p-5 class=("hidden" unless @isolated) data-posts-target='comments'
-    .mb-5.font-bold Comentarios
-    - if @post.comments.empty?
-      = turbo_frame_tag dom_id(@post, :no_comments)
-        .text-center.my-7
-          i.fa-regular.fa-comments.h-8.cursor-pointer.text-gray-600.mb-2
-          .text-gray-500 ¡Deja un comentario!
-    = turbo_frame_tag dom_id(@post, :comments)
-      = render(Shared::CommentComponent.with_collection(@post.comments))
-    = form_with model: @post.comments.build, data: { action: 'turbo:submit-end->posts#clearCommentForm' } do |f|
-      .flex.items-center.gap-3
-        i.fa-regular.fa-keyboard.text-gray-400.h-5
-        = f.hidden_field :commentable_type, value: @post.class.name
-        = f.hidden_field :commentable_id, value: @post.id
-        = f.text_field :comment, autocomplete: 'off',  class: 'rounded-full bg-gray-700 px-7 w-full', data: { posts_target: 'inputComment' }
+  = render(Comments::ContainerComponent.new(commentable: @post))
 
 

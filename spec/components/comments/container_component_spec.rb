@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Shared::CommentComponent, type: :component do
+RSpec.describe Comments::ContainerComponent, type: :component do
   pending "add some examples to (or delete) #{__FILE__}"
 
   # it "renders something useful" do
