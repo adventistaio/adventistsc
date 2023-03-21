@@ -9,17 +9,11 @@ class CommentsController < ApplicationController
                                            comment: comment_params[:comment])
 
     return unless @comment.save
-
-    respond_to do |format|
-      format.turbo_stream
-    end
   end
 
   def destroy
     @commentable = @comment.commentable
     @comment.destroy
-
-    respond_to(&:turbo_stream)
   end
 
   private

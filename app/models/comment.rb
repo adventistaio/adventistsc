@@ -14,7 +14,9 @@ class Comment < ApplicationRecord
   private
 
   def broadcast_after_destroy
-    broadcast_remove_to :comments
+    broadcast_render_to :comments,
+                        partial: 'comments/destroy',
+                        locals: { commentable:, comment: self }
   end
 
   def broadcast_after_create
@@ -27,9 +29,9 @@ class Comment < ApplicationRecord
     #                     locals: { commentable: commentable, comment: self },
     #                     target: "comments_#{commentable.class.name.parameterize}_#{commentable.id}"
 
-    broadcast_append_to :comments,
+    broadcast_render_to :comments,
                         partial: 'comments/create',
-                        locals: { commentable:, comment: self },
-                        target: "comments_#{commentable.class.name.parameterize}_#{commentable.id}"
+                        locals: { commentable:, comment: self }
+                        # target: "comments_#{commentable.class.name.parameterize}_#{commentable.id}"
   end
 end
