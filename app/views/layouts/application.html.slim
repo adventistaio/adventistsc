@@ -9,7 +9,7 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-  body
-    = render 'shared/header'
-    main
+  body class=(dark_mode)
+    main.dark:bg-gray-700
+      = render 'shared/header'
       = yield

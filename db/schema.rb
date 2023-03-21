@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_08_041133) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_19_031404) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_041133) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "email_verification_tokens", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_email_verification_tokens_on_user_id"
@@ -70,6 +81,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_041133) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.integer "reaction", null: false
+    t.string "type", null: false
+    t.bigint "user_id", null: false
+    t.string "reactable_type", null: false
+    t.bigint "reactable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reactable_type", "reactable_id"], name: "index_reactions_on_reactable"
+    t.index ["reactable_type", "reactable_id"], name: "index_reactions_on_reactable_type_and_reactable_id", unique: true
+    t.index ["user_id"], name: "index_reactions_on_user_id"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "user_agent"
@@ -91,9 +115,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_08_041133) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
   add_foreign_key "email_verification_tokens", "users"
   add_foreign_key "password_reset_tokens", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "reactions", "users"
   add_foreign_key "sessions", "users"
 end

@@ -1,0 +1,8 @@
+= form_with model: @post do |f|
+  = f.text_area :content,
+                 class: 'w-full min-h-32 text-center text-xl rounded-lg resize-none mb-4',
+                 autocomplete: :off, autofocus: true,
+                 rows: 5,
+                 placeholder: 'Tu idea ó pensamientos aquí...'
+  .flex.justify-end
+    = f.submit 'Publicar', class: 'bg-blue-500 hover:bg-blue-600 text-white w-full py-2 font-bold rounded-lg shadow-lg cursor-pointer'

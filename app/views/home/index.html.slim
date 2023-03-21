@@ -1,13 +1,22 @@
-.container.mx-auto.mt-28.px-5.py-5.flex.bg-gradient-to-r.from-sky-200.via-sky-100.to-white.rounded-lg
-  .flex-col
-    h2.text-xl.font-bold.mb-5 Posts
+= turbo_stream_from  :comments
+.container.mx-auto.mt-28.px-5.py-5.flex.rounded-lg class=(posts_background)
+  .grid.grid-cols-2.gap-16
+    .flex-col
+      .flex.justify-between
+        h2.text-xl.font-bold.mb-5 Publicaciones
+      = turbo_frame_tag Post.new
+        .mb-4.text-right = link_to '+ Nuevo', new_post_path, class: 'bg-blue-500 text-white font-bold rounded-lg px-2 py-2 text-sm shadow'
 
-    - @posts.each do |post|
-      .flex-col.mb-10.rounded-md.shadow-lg.bg-white.divide-y
-        .flex.justify-between.p-1.text-sm.px-5.py-3.items-center
-          div = post.user.email
-          .text-gray-400.text-xs = time_ago_in_words(post.created_at)
-        .p-10.font-bold.text-center
-          = post.content
-        .p-4.text-xs
-          | 💗 2 Likes     ☁️ 10 Comments
+      = turbo_frame_tag 'feed'
+        - @posts.each do |post|
+          = turbo_frame_tag post
+            = render(Posts::PostComponent.new(post:))
+    .flex-col
+      .flex.justify-between
+        h2.text-xl.font-bold.mb-5 Noticias
+      .flex.justify-between
+        h2.text-xl.font-bold.mb-5 Articulos
+      .flex.justify-between
+        h2.text-xl.font-bold.mb-5 Recetas
+      .flex.justify-between
+        h2.text-xl.font-bold.mb-5 Musica :D

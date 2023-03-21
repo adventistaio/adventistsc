@@ -1,0 +1,5 @@
+/ Handled by broadcast
+= turbo_stream.update dom_id(commentable, :comments_info)
+  = render(Shared::CommentsInfoComponent.new(count: commentable.comments.size, controller: commentable.class.name.parameterize))
+
+= turbo_stream.remove comment

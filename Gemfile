@@ -58,6 +58,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'dockerfile-rails', '>= 1.2'
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
 
@@ -71,6 +72,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'factory_bot_rails'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
@@ -82,5 +84,4 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '~> 3.1'
 gem 'image_processing', '>= 1.2'
 gem 'slim-rails', '~> 3.6'
-
-gem "dockerfile-rails", ">= 1.2", :group => :development
+gem 'view_component'
