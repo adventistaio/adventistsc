@@ -20,18 +20,8 @@ class Comment < ApplicationRecord
   end
 
   def broadcast_after_create
-    # broadcast_append_to :comments,
-    #                     html: ApplicationController.render(Comments::CommentComponent.new(comment: self), layout: false),
-    #                     target: "comments_#{commentable.class.name.parameterize}_#{commentable.id}"
-
-    # broadcast_append_to :comments,
-    #                     partial: 'comments/create',
-    #                     locals: { commentable: commentable, comment: self },
-    #                     target: "comments_#{commentable.class.name.parameterize}_#{commentable.id}"
-
     broadcast_render_to :comments,
                         partial: 'comments/create',
                         locals: { commentable:, comment: self }
-                        # target: "comments_#{commentable.class.name.parameterize}_#{commentable.id}"
   end
 end
