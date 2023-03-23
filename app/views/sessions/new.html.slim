@@ -1,4 +1,4 @@
-.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
+.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border.dark:bg-gray-800.dark:text-white.dark:border-gray-600
 
   p style="color: green" = notice
   p style="color: red" = alert
@@ -8,14 +8,14 @@
   = form_with(url: sign_in_path) do |form|
     .mb-4
       = form.label :email, style: "display: block"
-      = form.email_field :email, value: params[:email_hint], required: true, autofocus: true, autocomplete: "email", class: 'w-full rounded-lg'
+      = form.email_field :email, value: params[:email_hint], required: true, autofocus: true, autocomplete: "email", class: 'w-full rounded-lg dark:bg-gray-900'
 
     .mb-4
       = form.label :password, 'Contraseña', style: "display: block"
-      = form.password_field :password, required: true, autocomplete: "current-password", class: 'w-full rounded-lg'
+      = form.password_field :password, required: true, autocomplete: "current-password", class: 'w-full rounded-lg dark:bg-gray-900'
 
     .mb-4
-      = form.submit "Ingresar", class: 'text-lg cursor-pointer w-full py-2 font-bold text-gray-600 rounded-lg border rounded shadow-lg'
+      = form.submit "Ingresar", class: 'text-lg cursor-pointer w-full py-2 font-bold text-gray-600 rounded-lg border rounded shadow-lg dark:text-white'
 
   .text-center.text-sm.mb-4 Ó
   div
