@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include Pagy::Backend
-
   before_action :set_current_request_details
   before_action :set_current_session
   before_action :authenticate

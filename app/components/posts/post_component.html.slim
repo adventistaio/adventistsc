@@ -1,4 +1,4 @@
-.flex-col.mb-10.mx-auto.w-full.max-w-screen-sm.rounded-md.shadow-xl.bg-white.divide-y.text-gray-600.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-controller='posts'
+.flex-col.mb-10.mx-auto.w-full.max-w-screen-lg.rounded-md.shadow-xl.bg-white.divide-y.text-gray-600.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-controller='posts'
   .flex.justify-between.p-1.text-sm.px-2.py-2.items-center
     = render(Shared::UserInfoComponent.new(user: @post.user))
     .text-gray-400.text-xs = time_ago_in_words(@post.created_at)
@@ -11,17 +11,18 @@
         = render(Shared::LikeComponent.new(like: @current_user_like, likeable: @post))
       = turbo_frame_tag dom_id(@post, :comments_info)
         = render(Shared::CommentsInfoComponent.new(count: @post.comments.size, controller: 'posts'))
-    .menu
-      .dropdown.flex.relative data-controller='dropdown'
-        button.h-6.w-6.justify-center.items-center.rounded.hover:bg-gray-200.dark:hover:bg-gray-600.p-1  data-action='click->dropdown#toggle'
-          i.fa-solid.fa-ellipsis data-dropdown-target='button'
-        .absolute.top-5.right-0.shadow-xl.border.rounded-lg.hidden.px-3.py-2.bg-white.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-dropdown-target='menu'
-          ul
-            - if @post.user == Current.user
-              li
-                = button_to 'Eliminar', @post, method: :delete,
-                                               data: { turbo_confirm: '¿Deseas Eliminarlo?' },
-                                               class: 'px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600'
+    - if Current.user
+      .menu
+        .dropdown.flex.relative data-controller='dropdown'
+          button.h-6.w-6.justify-center.items-center.rounded.hover:bg-gray-200.dark:hover:bg-gray-600.p-1  data-action='click->dropdown#toggle'
+            i.fa-solid.fa-ellipsis data-dropdown-target='button'
+          .absolute.top-5.right-0.shadow-xl.border.rounded-lg.hidden.px-3.py-2.bg-white.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-dropdown-target='menu'
+            ul
+              - if @post.user == Current.user
+                li
+                  = button_to 'Eliminar', @post, method: :delete,
+                                                data: { turbo_confirm: '¿Deseas Eliminarlo?' },
+                                                class: 'px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600'
   = render(Comments::CommentsComponent.new(commentable: @post))
 
 

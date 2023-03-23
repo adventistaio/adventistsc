@@ -3,7 +3,11 @@
     = button_to @like, method: :delete do
       i.fa-solid.fa-heart.h-5.text-red-500
   - else
-    = button_to likes_path(reactable_type: @likeable.class.name, reactable_id: @likeable.id), class: 'cursor-pointer' do
-      i.fa-regular.fa-heart.h-5.cursor-pointer.text-gray-400
+    - if Current.user
+      = button_to likes_path(reactable_type: @likeable.class.name, reactable_id: @likeable.id), class: 'cursor-pointer' do
+        i.fa-regular.fa-heart.h-5.cursor-pointer.text-gray-400
+    - else
+      = link_to sign_up_path, class: 'cursor-pointer', data: { turbo: false } do
+          i.fa-regular.fa-heart.h-5.cursor-pointer.text-gray-400
   span< = @likes_count
 

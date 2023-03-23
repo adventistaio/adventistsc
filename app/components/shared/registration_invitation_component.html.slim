@@ -1,0 +1,7 @@
+.flex-col.mb-10.mx-auto.w-full.max-w-screen-lg.rounded-md.shadow-xl.bg-white.divide-y.text-gray-600.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-controller='posts'
+  .p-24
+    .text-center.text-4xl.font-bold.mb-10 Registrate para ver mas contenido 😄
+    = link_to "Registrarme",
+              sign_up_path,
+              data: { turbo: false },
+              class: 'text-2xl mb-4 block text-center shadow cursor-pointer w-full py-2 font-bold text-white rounded-lg bg-gradient-to-r from-emerald-500 to-lime-600'
