@@ -3,8 +3,11 @@
     = render(Shared::UserInfoComponent.new(user: @post.user))
     .text-gray-400.text-xs = time_ago_in_words(@post.created_at)
   /.py-8.py-16.py-32.text-2xl.text-4xl
-  .px-10.text-center class=(post_content_style(@post.content))
+  .px-10 class=(post_content_style(@post.content))
     = @post.content
+  - if @post.image.present?
+    .flex
+      = image_tag @post.image.variant(resize_to_limit: [600, 600]), class: 'w-full'
   .flex.justify-between.p-3.text-xs
     .flex.gap-10
       = turbo_frame_tag dom_id(@post, :like)
