@@ -1,15 +1,17 @@
 .container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border.dark:bg-gray-800.dark:text-white.dark:border-gray-600.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
-  .mb-4.bg-green-200.text-green-600.border.border-green-400.rounded.py-1.px-2 style="color: green" = notice
+  - if notice
+    .mb-4.bg-green-200.text-green-600.border.border-green-400.rounded.py-1.px-2 style="color: green" = notice
 
-  = form_with model: @profile do |f|
+  = form_with model: @profile, data: { controller: 'profile' } do |f|
     .flex.flex-col.gap-5
-      - if @profile.avatar.present?
-        = image_tag @profile.avatar.variant(resize_to_limit: [100, 100]), width: 120, height: 120, class: 'mx-auto shadow-xl border rounded-full'
-      - else
-        .rounded-full.bg-gray-500.h-20.w-20
+      .relative.mb-3.rounded-full.bg-gray-500.mx-auto.w-32.h-32
+        - if @profile.avatar.present?
+          = image_tag @profile.avatar.variant(resize_to_limit: [100, 100]), data: { profile_target: 'avatarImage', action: 'click->profile#selectAvatar' }, class: 'shadow-xl border rounded-full h-full w-full cursor-pointer'
+        - else
+          img.shadow-xl.border.rounded-full.h-full.w-full.cursor-pointer data-profile-target='avatarImage' data-action='click->profile#selectAvatar'
+          i.fa-solid.fa-camera.text-gray-300.w-8.h-8.my-auto.absolute.right-0.bottom-0
 
-      .mb-3
-        = f.file_field :avatar
+        = f.file_field :avatar, class: :hidden, data: { profile_target: 'avatarInput', action: 'input->profile#tempUpdateAvatar' }, accept: 'image/*'
       .mb-3
         = f.label :name, 'Nombre'
         = f.text_field :name, value: @profile.name, class: 'rounded-lg w-full dark:bg-gray-900'
