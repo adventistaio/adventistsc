@@ -1,8 +1,13 @@
 = form_with model: @post do |f|
   = f.text_area :content,
-                 class: 'w-full min-h-32 text-center text-xl rounded-lg resize-none mb-4',
-                 autocomplete: :off, autofocus: true,
+                 class: 'w-full min-h-32 text-center text-xl rounded-lg resize-none mb-4 text-gray-900 dark:bg-gray-700 dark:text-white',
+                 autocomplete: :off,
+                 autofocus: true,
                  rows: 5,
-                 placeholder: 'Tu idea ó pensamientos aquí...'
+                 placeholder: 'Tu idea ó pensamientos aquí...',
+                 required: true,
+                 data: { post_target: 'textInput', action: 'post#validateSubmit' }
   .flex.justify-end
-    = f.submit 'Publicar', class: 'bg-blue-500 hover:bg-blue-600 text-white w-full py-2 font-bold rounded-lg shadow-lg cursor-pointer'
+    = f.submit 'Publicar', disabled: true,
+                           data: { post_target: 'submitButton' },
+                           class: 'bg-blue-500 enabled:hover:bg-blue-600 text-white w-full py-2 font-bold rounded-lg shadow-lg cursor-pointer disabled:opacity-75 disabled:hover:none'
