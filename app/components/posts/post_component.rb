@@ -13,7 +13,7 @@ class Posts::PostComponent < ViewComponent::Base
   def post_content_style(content)
     default = 'text-md font-normal py-8 text-left'
 
-    return default if @post.image.present?
+    return default.gsub('py-8', 'py-4 px-4') if @post.image.present?
 
     case content.length
     when 1..50
