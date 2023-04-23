@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Adventistc
+    title Adventist App
     meta name="viewport" content="width=device-width,initial-scale=1"
     = csrf_meta_tags
     = csp_meta_tag
@@ -9,7 +9,7 @@ html
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
 
-  body class=(dark_mode)
-    main.dark:bg-gray-700
+  body.h-screen class=(dark_mode)
+    main.h-screen.overflow-auto.dark:bg-gray-700
       = render 'shared/header'
       = yield

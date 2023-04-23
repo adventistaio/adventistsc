@@ -1,10 +1,9 @@
-.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
-
+.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border.dark:bg-gray-800.dark:text-white.dark:border-gray-600
+  h1.font-bold.text-2xl.mb-5 Cambia tu contraseña
+  
   p style="color: red" = alert
 
-  h1 Cambia tu contraseña
-
-  = form_with(url: password_path, method: :patch) do |form|
+  = form_with(url: password_path, method: :patch, data: { turbo: false }) do |form|
     - if @user.errors.any?
       div style="color: red"
         h2 #[pluralize(@user.errors.count, "error")] prohibited this user from being saved:
@@ -13,23 +12,24 @@
           - @user.errors.each do |error|
             li = error.full_message
 
-    div
-      = form.label :current_password, style: "display: block"
-      = form.password_field :current_password, required: true, autofocus: true, autocomplete: "current-password"
+    .mb-4
+      = form.label :current_password, 'Contraseña actual', style: "display: block"
+      = form.password_field :current_password, required: true, autofocus: true, autocomplete: 'false', class: 'w-full rounded-lg dark:bg-gray-900'
 
-    div
-      = form.label :password, "New password", style: "display: block"
-      = form.password_field :password, required: true, autocomplete: "new-password"
-      div12 characters minimum.</div>
+    .mb-4
+      = form.label :password, 'Nueva contraseña', style: "display: block"
+      = form.password_field :password, required: true, autocomplete: 'false', class: 'w-full rounded-lg dark:bg-gray-900'
+      .text-sm.font-light Mínimo 12 caracteres.
 
-    div
-      = form.label :password_confirmation, "Confirm new password", style: "display: block"
-      = form.password_field :password_confirmation, required: true, autocomplete: "new-password"
+    .mb-4
+      = form.label :password_confirmation, "Confirma la nueva contraseña", style: "display: block"
+      = form.password_field :password_confirmation, required: true, autocomplete: 'false', class: 'w-full rounded-lg dark:bg-gray-900'
 
-    div
-      = form.submit "Save changes"
+    .mb-4
+      = form.submit "Guardar cambios",
+                    class: 'w-full bg-purple-600 text-white font-bold py-2 px-3 rounded-lg shadow mb-4'
 
   br
 
   div
-    = link_to "Back", root_path
+    = link_to "Atrás", root_path, class: 'underline underline-offset-1'

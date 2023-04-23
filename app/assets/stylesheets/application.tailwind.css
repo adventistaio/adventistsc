@@ -1,4 +1,25 @@
 @tailwind base;
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+
+*::-webkit-scrollbar {
+  width: .4em;
+}
+ 
+*::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(124, 124, 124);
+  outline: 1px solid slategrey;
+  border-radius: 1em;
+}
+
 @tailwind components;
 @tailwind utilities;
 

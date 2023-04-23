@@ -1,3 +1,9 @@
-.flex.items-center.gap-2.cursor-pointer *{"data-#{@controller}-target": 'commentsInfo'} data-action='click->posts#toggleComments'
-  i.fa-regular.fa-comment.h-5.text-gray-400
-  span< = @count
+- if Current.user
+  .flex.items-center.gap-2.cursor-pointer *{"data-#{@controller}-target": 'commentsInfo'} data-action='click->posts#toggleComments'
+    i.fa-regular.fa-comment.h-5.text-gray-400
+    span< = @count
+- else
+  = link_to sign_up_path, data: { turbo: false }, class: 'flex items-center gap-2 cursor-pointer' do
+    .flex.items-center.gap-2.cursor-pointer
+      i.fa-regular.fa-comment.h-5.text-gray-400
+      span< = @count

@@ -1,5 +1,5 @@
-.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border
-  h1.font-bold.text-2xl.mb-5 Registrarme
+.container.rounded-lg.bg-white.shadow-2xl.p-10.flex.flex-col.w-96.mx-auto.my-24.border.dark:bg-gray-800.dark:text-white.dark:border-gray-600
+  h1.text-center.font-bold.text-2xl.mb-5 Registro
 
   = form_with(url: sign_up_path) do |form|
     - if @user.errors.any?
@@ -12,19 +12,19 @@
 
     .mb-4
       = form.label :email, style: "display: block"
-      = form.email_field :email, required: true, autofocus: true, autocomplete: "email", class: 'w-full rounded-lg'
+      = form.email_field :email, required: true, autofocus: true, autocomplete: "email", class: 'w-full rounded-lg dark:bg-gray-900'
 
     .mb-4
       = form.label :password, 'Contraseña', style: "display: block"
-      = form.password_field :password, required: true, autocomplete: "new-password", class: 'w-full rounded-lg'
-      .text-sm.font-light Minimo 12 caracteres.
+      = form.password_field :password, required: true, autocomplete: "new-password", class: 'w-full rounded-lg dark:bg-gray-900'
+      .text-sm.font-light Mínimo 12 caracteres.
 
     .mb-4
       = form.label :password_confirmation, 'Confirma la contraseña', style: "display: block"
-      = form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: 'w-full rounded-lg'
+      = form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: 'w-full rounded-lg dark:bg-gray-900'
 
     .mb-4
       = form.submit 'Registrarme',
                     class: 'text-lg cursor-pointer w-full py-2 font-bold text-white rounded-lg bg-gradient-to-r from-emerald-500 to-lime-600'
       .text-sm.text-center.my-5 ¿Ya tienes una cuenta?
-      = link_to "Ingresar", sign_in_path, class: 'block text-center text-lg cursor-pointer w-full py-2 font-semibold text-gray-600 rounded-lg bg-white border shadow'
+      = link_to "Ingresar", sign_in_path, class: 'block text-center text-lg cursor-pointer w-full py-2 font-semibold text-gray-600 rounded-lg bg-white border shadow dark:bg-gray-800 dark:text-white'
