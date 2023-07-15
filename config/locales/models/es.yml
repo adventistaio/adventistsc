@@ -5,6 +5,7 @@ es:
     attributes:
       user:
         password: Contraseña
+        password_confirmation: Confirmar contraseña
     errors:
       models:
         user:

@@ -19,7 +19,7 @@
     .mb-4
       = form.label :password, 'Nueva contraseña', style: "display: block"
       = form.password_field :password, required: true, autocomplete: 'false', class: 'w-full rounded-lg dark:bg-gray-900'
-      .text-sm.font-light Mínimo 12 caracteres.
+      .text-sm.font-light Mínimo #{User::PASSWORD_MINUMUM_SIZE} caracteres.
 
     .mb-4
       = form.label :password_confirmation, "Confirma la nueva contraseña", style: "display: block"
