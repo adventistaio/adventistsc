@@ -6,9 +6,9 @@ class PasswordsController < ApplicationController
 
   def update
     if !@user.authenticate(params[:current_password])
-      redirect_to edit_password_path, alert: 'La contraseña actual es incorrecta'
+      redirect_to edit_password_path, alert: I18n.t('.incorrect_password')
     elsif @user.update(user_params)
-      redirect_to profiles_path, notice: 'Tu contraseña fue cambiada correctamente'
+      redirect_to profiles_path, notice: I18n.t('.success_change_password')
     else
       render :edit, status: :unprocessable_entity
     end

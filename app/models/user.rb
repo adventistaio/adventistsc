@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  PASSWORD_MINUMUM_SIZE=10
   has_secure_password
 
   has_many :email_verification_tokens, dependent: :destroy
@@ -11,7 +12,8 @@ class User < ApplicationRecord
 
   # validations
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, allow_nil: true, length: { minimum: 10 }, format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/ }
+  validates :password, allow_nil: true, length: { minimum: PASSWORD_MINUMUM_SIZE },
+                                        format: { with: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/, message: I18n.t('activerecord.errors.models.user.attributes.email_format') }
   validates :role, presence: true
 
   enum role: { basic: 0, admin: 99 }

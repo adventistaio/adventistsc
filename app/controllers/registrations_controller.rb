@@ -8,12 +8,13 @@ class RegistrationsController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    binding.break
     if @user.save
       session = @user.sessions.create!
       cookies.signed.permanent[:session_token] = { value: session.id, httponly: true }
 
       send_email_verification
-      redirect_to root_path, notice: "Welcome! You have signed up successfully"
+      redirect_to root_path, notice: I18n.t('.success_signup')
     else
       render :new, status: :unprocessable_entity
     end

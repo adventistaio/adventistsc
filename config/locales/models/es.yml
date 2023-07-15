@@ -1,0 +1,13 @@
+es:
+  activerecord:
+    models:
+      user: Usuario
+    attributes:
+      user:
+        password: Contraseña
+    errors:
+      models:
+        user:
+          attributes:
+            email: Email
+            email_format: debe tener por lo menos una minuscula, una mayuscula y un numero.

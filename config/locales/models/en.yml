@@ -1,0 +1,13 @@
+en:
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        password: Password
+    errors:
+      models:
+        user:
+          attributes:
+            email: Email
+            email_format: must have at least 1 lowercase, 1 uppercase and 1 number.

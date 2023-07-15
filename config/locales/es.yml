@@ -29,11 +29,12 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+es:
   passwords:
     update:
-      incorrect_password: The current password you entered is incorrect.
-      success_change_password: Your password has been changed.
+      incorrect_password: La contraseña actual es incorrecta.
+      success_change_password: Tu contraseña fue cambiada correctamente.
   registrations:
     create:
-      success_signup: Welcome! You have signed up successfully.
+      success_signup: ¡Bienvenido! Te registraste correctamente.
+
