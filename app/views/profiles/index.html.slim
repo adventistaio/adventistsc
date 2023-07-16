@@ -19,7 +19,9 @@
         = f.label :biography, 'Biografía'
         div = f.text_area :biography, class: 'rounded-lg text-sm w-full dark:bg-gray-900'
 
-      = f.submit 'Guardar', class: 'bg-purple-600 text-white font-bold py-2 px-3 rounded-lg shadow mb-4'
+      = f.submit t('actions.save'), class: 'btn-primary'
   
   = link_to 'Cambiar contraseña', edit_password_path, class: 'bg-gray-200 font-bold py-2 px-3 rounded-lg border shadow text-center dark:bg-gray-800 dark:text-white'
 
+  .flex.justify-center
+    = link_to t('.other_settings'), settings_path, class: 'link font-bold mt-5'

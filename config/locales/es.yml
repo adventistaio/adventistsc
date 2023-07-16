@@ -32,10 +32,12 @@
 es:
   actions:
     delete: Eliminar
+    go_back: < Regresar
     login: Ingresar
     logout: Salir
-    register_me: Registrarme
     new: Nuevo
+    register_me: Registrarme
+    save: Guardar
     view_more: Ver más
   info:
     no_comments: ¡Aun no hay comentarios!

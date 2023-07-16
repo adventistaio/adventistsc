@@ -23,12 +23,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
   .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+    @apply bg-purple-600 text-white text-center font-bold py-2 px-3 rounded-lg shadow mb-4 cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-600 text-gray-300 text-center font-bold py-2 px-3 rounded-lg shadow mb-4 cursor-pointer;
+  }
+
+  .link {
+    @apply text-blue-600;
+  }
+
+  .select {
+    @apply rounded w-full dark:text-white dark:bg-gray-700;
   }
 }
-
-*/

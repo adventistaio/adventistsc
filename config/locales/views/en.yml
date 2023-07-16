@@ -57,3 +57,7 @@ en:
     new:
       title: Log In
       forgot_password: Did you forget your password?
+  settings:
+    updated_success: Settings was updated.
+    index:
+      title: Settings

@@ -4,6 +4,7 @@ es:
       user: Usuario
     attributes:
       user:
+        locale: Idioma
         password: Contraseña
         password_confirmation: Confirmar contraseña
     errors:

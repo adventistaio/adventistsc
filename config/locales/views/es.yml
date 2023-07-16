@@ -57,3 +57,7 @@ es:
     new:
       title: Ingreso
       forgot_password: ¿Olvidaste tu contraseña?
+  settings:
+    index:
+      title: Configuraciones
+      updated_success: Configuraciones actualizadas.
