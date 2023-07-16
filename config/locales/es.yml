@@ -31,7 +31,9 @@
 
 es:
   actions:
+    delete: Eliminar
     login: Ingresar
+    logout: Salir
     register_me: Registrarme
     new: Nuevo
     view_more: Ver más

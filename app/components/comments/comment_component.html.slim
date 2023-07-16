@@ -12,6 +12,6 @@
             ul
               - if @comment.user == Current.user
                 li
-                  = button_to 'Eliminar', @comment, method: :delete,
+                  = button_to t('actions.delete'), @comment, method: :delete,
                                                 data: { turbo_confirm: '¿Deseas Eliminarlo?' },
                                                 class: 'px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600'

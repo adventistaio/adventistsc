@@ -23,7 +23,7 @@
             ul
               - if @post.user == Current.user
                 li
-                  = button_to 'Eliminar', @post, method: :delete,
+                  = button_to t('actions.delete'), @post, method: :delete,
                                                 data: { turbo_confirm: '¿Deseas Eliminarlo?' },
                                                 class: 'px-2 py-1 rounded hover:bg-gray-200 dark:hover:bg-gray-600'
   = render(Comments::CommentsComponent.new(commentable: @post))
