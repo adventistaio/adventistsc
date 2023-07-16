@@ -2,6 +2,8 @@
   .font-bold.text-xl
     = link_to 'Adventista App', root_path
   .flex.gap-4
+    = render(Shared::SelectLangComponent.new(current: I18n.locale,
+                                             available_locales: I18n.available_locales)) unless Current.user
     - if Current.user.present?
       = link_to Current.user.username, profiles_path,  class: 'font-light'
 
@@ -17,6 +19,6 @@
       = button_to "Salir", Current.session, method: :delete, class: 'text-xs text-white bg-red-500 px-2 py-0.5 rounded'
     - else
       .flex.gap-3.items-center
-        = link_to "Ingresar", sign_in_path, class: 'px-2 py-1 rounded bg-white shadow border border-gray-600 dark:bg-gray-800 dark:text-white'
+        = link_to t('actions.login'), sign_in_path, class: 'px-2 py-1 rounded bg-white shadow border border-gray-600 dark:bg-gray-800 dark:text-white'
         | ó
-        = link_to "Registrarme", sign_up_path, class: 'px-2 py-1 rounded bg-lime-400 shadow  border font-bold bg-gradient-to-r from-emerald-600 to-lime-500 dark:border-gray-500'
+        = link_to t('actions.register_me'), sign_up_path, class: 'px-2 py-1 rounded bg-lime-400 shadow  border font-bold bg-gradient-to-r from-emerald-600 to-lime-500 dark:border-gray-500'

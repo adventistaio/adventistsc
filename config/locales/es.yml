@@ -33,3 +33,9 @@ es:
   actions:
     login: Ingresar
     register_me: Registrarme
+    new: Nuevo
+    view_more: Ver más
+  info:
+    no_comments: ¡Aun no hay comentarios!
+  visitors:
+    register_to_view_more: Registrate para ver mas contenido 😄

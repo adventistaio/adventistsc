@@ -23,5 +23,8 @@ module Adventistc
       g.template_engine :slim
       g.test_framework  :rspec
     end
+
+    config.i18n.available_locales = [:en, :es]
+    config.i18n.default_locale = :en
   end
 end

@@ -33,3 +33,9 @@ en:
   actions:
     login: Login
     register_me: Register Me
+    new: New
+    view_more: View more
+  info:
+    no_comments: No comments yet!
+  visitors:
+    register_to_view_more: Register to view more content 😄

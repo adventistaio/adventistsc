@@ -30,6 +30,12 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 es:
+  home:
+    index:
+      posts: Publicaciones
+      news: Noticias
+      articles: Articulos
+      recipes: Recetas
   identity:
     password_resets:
       new:

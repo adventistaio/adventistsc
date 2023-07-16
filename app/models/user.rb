@@ -2,12 +2,13 @@ class User < ApplicationRecord
   PASSWORD_MINUMUM_SIZE=10
   has_secure_password
 
+  store :settings, accessors: [:locale]
+
   has_many :email_verification_tokens, dependent: :destroy
   has_many :password_reset_tokens, dependent: :destroy
   has_many :sessions, dependent: :destroy
 
   has_one :profile, dependent: :destroy
-
   has_many :posts, dependent: :destroy
 
   # validations
@@ -31,10 +32,17 @@ class User < ApplicationRecord
   end
 
   before_create -> { build_profile(name: "Siervo Fiel #{Time.current.to_i/Time.current.sec}") }
+  before_create -> { locale = I18n.locale }
 
   def username
     return profile.name if profile.name.present?
 
     email
+  end
+
+  def change_locale(new_locale)
+    return if locale == new_locale
+
+    update(locale: new_locale)
   end
 end

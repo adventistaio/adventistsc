@@ -3,12 +3,12 @@
   .grid.grid-cols-5.gap-16.w-full
     .order-2.lg:order-1.flex-col.col-span-5.lg:col-span-3
       .flex.justify-between
-        h2.text-xl.font-bold.mb-5 Publicaciones
+        h2.text-xl.font-bold.mb-5 = t('.posts')
       - if Current.user
         = turbo_frame_tag Post.new
-          .mb-4.text-right = link_to '+ Nuevo', new_post_path, class: 'bg-blue-500 text-white font-bold rounded-lg px-2 py-2 text-sm shadow'
+          .mb-4.text-right = link_to "+ #{t('actions.new')}", new_post_path, class: 'bg-blue-500 text-white font-bold rounded-lg px-2 py-2 text-sm shadow'
       - else
-        .mb-4.text-right = link_to '+ Nuevo', sign_up_path, data: { turbo: false }, class: 'bg-blue-500 text-white font-bold rounded-lg px-2 py-2 text-sm shadow'
+        .mb-4.text-right = link_to "+ #{t('actions.new')}", sign_up_path, data: { turbo: false }, class: 'bg-blue-500 text-white font-bold rounded-lg px-2 py-2 text-sm shadow'
 
       = turbo_frame_tag 'feed'
         - @posts.each do |post|
@@ -17,7 +17,7 @@
         - unless Current.user
           = render(Shared::RegistrationInvitationComponent.new())
     .order-1.lg:order-2.col-span-5.lg:col-span-2.flex-col.grid-cols-2
-      h2.block.text-xl.font-bold.mb-2 Noticias
+      h2.block.text-xl.font-bold.mb-2 = t('.news')
       .flex.justify-between.items-center.mb-4.gap-4.mb-5
         .new.flex.flex-col.justify-end.bg-gray-400.h-28.w-full.rounded.bg-cover.overflow-hidden style="background-image: url('https://cdn.shopify.com/s/files/1/0231/8024/7118/files/SHOPIFY_Home_Page_Banners_3_e8eee1f4-cfc7-46ec-afcb-ad8925f4c58a_1920x.png?v=1679922931')"
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 Lorem ipsum, dolor sit amet consectetur adipisicing. Dolore...
@@ -25,9 +25,9 @@
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 Lorem ipsum, dolor sit amet consectetur mas otro
         .new.flex.flex-col.justify-end.bg-gray-400.h-28.w-full.rounded.bg-cover.overflow-hidden style="background-image: url('https://cdn.shopify.com/s/files/1/0231/8024/7118/files/SHOPIFY_Home_Page_Banners_3_e8eee1f4-cfc7-46ec-afcb-ad8925f4c58a_1920x.png?v=1679922931')"
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 Sit amet adipisicing elit. Dolore amigos
-        .grow.news-more.text-sm Ver más
+        .grow.news-more.text-sm = t('actions.view_more')
 
-      h2.block.text-xl.font-bold.mb-2 Articulos
+      h2.block.text-xl.font-bold.mb-2 = t('.articles')
       .flex.justify-between.items-center.mb-4.gap-4.mb-5
         .new.flex.flex-col.justify-end.bg-gray-400.h-28.w-full.rounded.bg-cover.overflow-hidden style="background-image: url('https://wp.en.aleteia.org/wp-content/uploads/sites/2/2020/09/WEB3-CROSS-SUNRISE-SUN-RAY-LIGHT-JESUS-shutterstock_366834113.jpg?w=620&h=310&crop=1')"
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 Como lograr una mejor cosecha
@@ -35,9 +35,9 @@
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 Cuidado con la modernidad
         .new.flex.flex-col.justify-end.bg-gray-400.h-28.w-full.rounded.bg-cover.overflow-hidden style="background-image: url('https://wp.en.aleteia.org/wp-content/uploads/sites/2/2020/09/WEB3-CROSS-SUNRISE-SUN-RAY-LIGHT-JESUS-shutterstock_366834113.jpg?w=620&h=310&crop=1')"
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 DIY, gran idea para departamento de infantes
-        .grow.news-more.text-sm Ver más
+        .grow.news-more.text-sm = t('actions.view_more')
 
-      h2.text-xl.font-bold.mb-2 Recetas
+      h2.text-xl.font-bold.mb-2 = t('.recipes')
       .flex.justify-between.items-center.mb-4.gap-4.mb-5
         .new.flex.flex-col.justify-end.bg-gray-400.h-28.w-full.rounded.bg-cover.overflow-hidden style="background-image: url('https://images.immediate.co.uk/production/volatile/sites/30/2018/06/Vegan-salad-bowl-499145d.jpg?quality=90&resize=556,505')"
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 Macarrones saludables!
@@ -45,7 +45,7 @@
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 Ceviche vegano
         .new.flex.flex-col.justify-end.bg-gray-400.h-28.w-full.rounded.bg-cover.overflow-hidden style="background-image: url('https://images.immediate.co.uk/production/volatile/sites/30/2018/06/Vegan-salad-bowl-499145d.jpg?quality=90&resize=556,505')"
           .text-xs.font-semibold.px-2.py-1.bg-black.opacity-70 Leche de soja, paso a paso
-        .grow.news-more.text-sm Ver más
+        .grow.news-more.text-sm = t('actions.view_more')
 
       h2.hidden.text-xl.font-bold.mb-5 Musica :D
       .w-full.flex.justify-between.mb-4.gap-5

@@ -10,7 +10,7 @@
   = turbo_frame_tag dom_id(@commentable, :comments), data: {comments_target: 'comments'}
     .no-comments.text-center.my-7.transition-all.duration-300 class=('hidden' if @commentable.comments.any?) data-comments-target="noComments"
       i.fa-regular.fa-comments.h-8.cursor-pointer.text-gray-300.dark:text-gray-600.mb-2
-      .text-sm.text-gray-400.dark:text-gray-500 ¡Aun no hay comentarios!
+      .text-sm.text-gray-400.dark:text-gray-500 = t('info.no_comments')
     = render(Comments::CommentComponent.with_collection(@commentable.comments))
   = form_with model: @commentable.comments.build, data: { action: 'turbo:submit-end->posts#clearCommentForm' } do |f|
     .flex.items-center.gap-3
