@@ -30,29 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 es:
-  identity:
-    password_resets:
-      new:
-        title: ¿Olvidaste tu contraseña?
-        send_email_instructions: Enviar instrucciones a mi correo
-  passwords:
-    update:
-      incorrect_password: La contraseña actual es incorrecta.
-      success_change_password: Tu contraseña fue cambiada correctamente.
-  registrations:
-    new:
-      title: Registro
-      registration_error_alert: impidieron que este usuario sea registrado.
-      password_minumum_info: Minimo %{number} caracteres.
-      register_me: Registrarme
-      already_account: ¿Ya tienes una cuenta?
-      login: Ingresar
-    create:
-      success_signup: ¡Bienvenido! Te registraste correctamente.
-  sessions:
-    new:
-      title: Ingreso
-      login: Ingresar
-      register_me: Registrarme
-      forgot_password: ¿Olvidaste tu contraseña?
-
+  actions:
+    login: Ingresar
+    register_me: Registrarme

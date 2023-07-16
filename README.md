@@ -8,6 +8,7 @@ This is a community project for Adventist community, to create and share informa
   - mailcatcher: Needs to be installed out from Gemfile
   - postgresql
   - Redis
+  - vips `sudo apt install libvips`
 
 * Configuration
   - Setup the `config/database.yml` file to connect with PostgreSQL. You can base it on the example file by copying the file and modifying it.

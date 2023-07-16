@@ -29,7 +29,25 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
-  actions:
-    login: Login
-    register_me: Register Me
+es:
+  identity:
+    password_resets:
+      new:
+        title: ¿Olvidaste tu contraseña?
+        send_email_instructions: Enviar instrucciones a mi correo
+  passwords:
+    update:
+      incorrect_password: La contraseña actual es incorrecta.
+      success_change_password: Tu contraseña fue cambiada correctamente.
+  registrations:
+    new:
+      title: Registro
+      registration_error_alert: impidieron que este usuario sea registrado.
+      password_minumum_info: Minimo %{number} caracteres.
+      already_account: ¿Ya tienes una cuenta?
+    create:
+      success_signup: ¡Bienvenido! Te registraste correctamente.
+  sessions:
+    new:
+      title: Ingreso
+      forgot_password: ¿Olvidaste tu contraseña?

@@ -24,7 +24,7 @@
       = form.password_field :password_confirmation, required: true, autocomplete: "new-password", class: 'w-full rounded-lg dark:bg-gray-900'
 
     .mb-4
-      = form.submit t('.register_me'),
+      = form.submit t('actions.register_me'),
                     class: 'text-lg cursor-pointer w-full py-2 font-bold text-white rounded-lg bg-gradient-to-r from-emerald-500 to-lime-600'
       .text-sm.text-center.my-5 = t('.already_account')
-      = link_to t('.login'), sign_in_path, class: 'block text-center text-lg cursor-pointer w-full py-2 font-semibold text-gray-600 rounded-lg bg-white border shadow dark:bg-gray-800 dark:text-white'
+      = link_to t('actions.login'), sign_in_path, class: 'block text-center text-lg cursor-pointer w-full py-2 font-semibold text-gray-600 rounded-lg bg-white border shadow dark:bg-gray-800 dark:text-white'
