@@ -16,11 +16,19 @@ User.destroy_all
 USERS_NUMBER.times.each do |_|
   user = User.new(email: Faker::Internet.email, password: 'Secret.XYZ123', password_confirmation: 'Secret.XYZ123')
 
+  # Posts
   rand(POST_MAX).times.each do |_|
     user.posts.build(content: Faker::Lorem.paragraph)
   end
+
+  #Articles
+  user.articles.build(
+    title: Faker::Book.title,
+    content: Faker::Lorem.paragraphs(number: 5).join("\n\n")
+  )
 
   user.save!
 end
 
 puts "#{USERS_NUMBER} Users with random posts were created."
+
