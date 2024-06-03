@@ -1,4 +1,4 @@
-.flex-col.mb-10.mx-auto.w-full.max-w-screen-lg.rounded-md.shadow-xl.bg-white.divide-y.text-gray-600.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700 data-controller='posts'
+.flex-col.mb-10.mx-auto.w-full.max-w-screen-lg.rounded-md.shadow-xl.bg-white.divide-y.text-gray-600.dark:bg-gray-800.dark:divide-y.dark:divide-gray-600.dark:text-white.dark:border.dark:border-gray-700.border-2 data-controller='posts'
   .flex.justify-between.p-1.text-sm.px-2.py-2.items-center
     = render(Shared::UserInfoComponent.new(user: @post.user))
     .text-gray-400.text-xs = time_ago_in_words(@post.created_at)
