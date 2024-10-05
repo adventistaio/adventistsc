@@ -3,7 +3,7 @@
 This is a community project for Adventist community, to create and share information and media with others.
 
 * System dependencies
-  - Ruby version 3.2.0
+  - Ruby version 3.3.5
   - Rails 7.0.6
   - mailcatcher: Needs to be installed out from Gemfile
   - postgresql
