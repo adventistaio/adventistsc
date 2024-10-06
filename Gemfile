@@ -31,7 +31,7 @@ gem 'tailwindcss-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem 'redis', '~> 4.0'
+gem 'redis', '~> 5.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem 'kredis'
@@ -40,7 +40,7 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[ mingw mswin x64_mingw jruby ]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
@@ -68,8 +68,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
-  gem 'ruby-lsp'
   gem 'mailcatcher', '0.10.0'
+  gem 'ruby-lsp'
 end
 
 group :test do
@@ -83,10 +83,9 @@ end
 
 gem 'authentication-zero', '~> 3.0'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+gem 'aws-sdk-s3', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker', '~> 3.1'
 gem 'pagy', '~> 6.0'
 gem 'slim-rails', '~> 3.6'
 gem 'view_component'
-gem 'aws-sdk-s3', require: false
-
